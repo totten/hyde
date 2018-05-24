@@ -1,5 +1,6 @@
-Drupal is well and good, but I don't like editing pages a web UI. Or storing
-in them in MySQL. Is that a problem? Can I still use Drupal?
+Drupal is well and good, but I don't like editing pages in a web UI.  Or
+storing them in MySQL.  Or configuring workflows.  Is that a problem?  Can I
+still use Drupal?
 
 Mr. Hyde is the evil version of Dr. [Jekyll](https://jekyllrb.com/). You can
 create Markdown files and store them in a git repo... but display them as
@@ -45,7 +46,8 @@ $ git commit
 
 # Markdown Metadata
 
-In Jekyll syntax, a Markdown file can begin with a YAML metadata. We use
+In Jekyll syntax, a Markdown file can begin with a YAML metadata. In this
+example, we set the `title` of the HTML page with a little extra metadata:
 
 ```
 ---
@@ -60,7 +62,7 @@ Because sometimes you like to write content in a simple way.
 
 Supported fields:
 
-* `title`: The main page title
+* `title`: The main HTML page title
 
 # Issues/Limitations/FIXMEs
 
