@@ -3,7 +3,8 @@ in them in MySQL. Is that a problem? Can I still use Drupal?
 
 Mr. Hyde is the evil version of Dr. [Jekyll](https://jekyllrb.com/). You can
 create Markdown files and store them in a git repo... but display them as
-pages in a Drupal site.
+pages in a Drupal site. This allows you to use Drupal's general layout
+engine (themes and blocks) while tracking content in Git/Github/etc.
 
 # Install the module
 
@@ -69,6 +70,9 @@ I'm trying to write this quickly, so I don't really care.
 * Add an admin form for manging `hyde_path`
 * Test/implement page-cache support.
 * Rework as Drupal entity. If the file-system is writeable, allow editing the `body` via CLI or GUI.
+* Add more options to the metadata for:
+    * Setting permissions
+    * Changing layouts
 
 # Coding Style
 
