@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Implements hook_menu().
+ */
 function hyde_menu() {
   _hyde_init();
   $hyde_path = _hyde_path();
@@ -19,6 +22,13 @@ function hyde_menu() {
   return $items;
 }
 
+/**
+ * @param string $rel_path
+ *   The relative path to the Markdown document.
+ * @return string
+ *   Rendered HTML document.
+ * @throws \Exception
+ */
 function _hyde_render($rel_path) {
   _hyde_init();
 
@@ -47,10 +57,10 @@ function _hyde_render($rel_path) {
  * Split apart the YAML headers and the main content of the Markdown document.
  *
  * @param string $markdown
- *   Ex: "---\title: \"Hello world\"\n----\nHello world"
+ *   Ex: "---\ntitle: \"War and Peace\"\n---\nHello world"
  * @return array
  *   Array(0 => $headers, 1 => $markdownText).
- *   Ex: [['layout' => 'pretty'], 'Hello world']
+ *   Ex: [['title' => 'War and Peace'], 'Hello world']
  */
 function _hyde_parse_headers($markdown) {
   $headers = array();
@@ -61,6 +71,9 @@ function _hyde_parse_headers($markdown) {
   return array($headers, $markdown);
 }
 
+/**
+ * Ensure that all classes/resources are available.
+ */
 function _hyde_init() {
   if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'vendor')) {
     // It seems we installed with composer inside this repo. What dirty proof-of-concept hacking is this.
@@ -68,6 +81,11 @@ function _hyde_init() {
   }
 }
 
+/**
+ * Get the storage path for Markdown content.
+ *
+ * @return string
+ */
 function _hyde_path() {
   return variable_get('hyde_path', variable_get('file_private_path') . DIRECTORY_SEPARATOR . 'hyde');
 }

@@ -1,4 +1,4 @@
 name = Hyde
-description = The evil twin of Dr. Jekyll
+description = Display Markdown files as web pages
 core = 7.x
 version = "7.x-0.1"
