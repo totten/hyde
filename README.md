@@ -2,14 +2,16 @@ Drupal is well and good, but I don't like editing pages in a web UI.  Or
 storing them in MySQL.  Or configuring workflows.  Is that a problem?  Can I
 still use Drupal?
 
-Mr. Hyde is the evil version of Dr. [Jekyll](https://jekyllrb.com/). You can
-create Markdown files and store them in a git repo... but display them as
-pages in a Drupal site. This allows you to use Drupal's general layout
-engine (themes and blocks) while tracking content in Git/Github/etc.
+Mr.  Hyde is the evil version of Dr.  [Jekyll](https://jekyllrb.com/) --
+it's a Drupal that lets you create Markdown files and store them in a git
+repo...  but display them as pages in a Drupal site.  This allows you to use
+Drupal's general layout engine (themes and blocks) while tracking content in
+Git/Github/etc.
 
 # Install the module
 
 ```
+$ cd sites/all/modules
 $ git clone https://github.com/totten/hyde
 $ cd hyde
 $ composer install
