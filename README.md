@@ -36,10 +36,6 @@ new repo here (`git init`) or clone an existing repo.
 > value of `hyde_path` by calling `drush vset hyde_path /path/to/doc/root`
 > or editing `settings.php`.
 
-> __Tip__: Want to be sure that malicious web users can't do evil things -- that only
-> CLI users can work with this content? Just set the file-permissions appropriately
-> and use `settings.php` to lock-down the `hyde_path` option.
-
 # Add a new page
 
 ```
@@ -77,10 +73,11 @@ I'm trying to write this quickly, so I don't really care.
 
 * Add an admin form for manging `hyde_path`
 * Test/implement page-cache support.
-* Rework as Drupal entity. If the file-system is writeable, allow editing the `body` via CLI or GUI.
+* Rework as Drupal entity. If a file is writeable, allow editing the `body` via CLI or GUI. If a file is not writeable, then don't.
 * Add more options to the metadata for:
     * Setting permissions
     * Changing layouts
+* Want to be sure that *only* CLI users can manipulate Markdown files? Just set the file-permissions appropriately.
 
 # Coding Style
 
