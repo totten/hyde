@@ -1,0 +1,15 @@
+{
+    "name": "totten/hyde",
+    "type": "drupal-module",
+    "require": {
+        "erusev/parsedown": "^1.7",
+        "symfony/yaml": "~2.5 || ~3.0 || ~4.0"
+    },
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Tim Otten",
+            "email": "totten@civicrm.org"
+        }
+    ]
+}

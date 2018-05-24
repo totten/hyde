@@ -1,0 +1,73 @@
+<?php
+
+function hyde_menu() {
+  _hyde_init();
+  $hyde_path = _hyde_path();
+
+  $files = file_scan_directory($hyde_path, '/\.md$/');
+  $items = array();
+  foreach ($files as $file) {
+    $rel_path = substr($file->uri, 1 + strlen($hyde_path));
+    $name = preg_replace(';\.md$;', '', $rel_path);
+    $items[$name] = array(
+      'page callback' => '_hyde_render',
+      'page arguments' => [$rel_path],
+      'access callback' => TRUE,
+    );
+  }
+
+  return $items;
+}
+
+function _hyde_render($rel_path) {
+  _hyde_init();
+
+  if (strpos($rel_path, '..') !== FALSE) {
+    throw new Exception("I don't like your filename. Yes, this is too persnickity.");
+  }
+
+  $md_file = _hyde_path() . DIRECTORY_SEPARATOR . $rel_path;
+  if (!file_exists($md_file)) {
+    drupal_not_found();
+  }
+
+  $markdown = file_get_contents($md_file);
+  list($headers, $markdown) = _hyde_parse_headers($markdown);
+
+  if (isset($headers['title'])) {
+    drupal_set_title($headers['title']);
+  }
+
+  $parser = new Parsedown();
+  return
+    $parser->text($markdown);
+}
+
+/**
+ * Split apart the YAML headers and the main content of the Markdown document.
+ *
+ * @param string $markdown
+ *   Ex: "---\title: \"Hello world\"\n----\nHello world"
+ * @return array
+ *   Array(0 => $headers, 1 => $markdownText).
+ *   Ex: [['layout' => 'pretty'], 'Hello world']
+ */
+function _hyde_parse_headers($markdown) {
+  $headers = array();
+  if (preg_match(';^---\n(.*)\n---\n;m', $markdown, $matches)) {
+    $headers = Symfony\Component\Yaml\Yaml::parse($matches[1]);
+    $markdown = preg_replace(';^---\n(.*)\n---\n;m', '', $markdown, 1);
+  }
+  return array($headers, $markdown);
+}
+
+function _hyde_init() {
+  if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . 'vendor')) {
+    // It seems we installed with composer inside this repo. What dirty proof-of-concept hacking is this.
+    require_once __DIR__ . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+  }
+}
+
+function _hyde_path() {
+  return variable_get('hyde_path', variable_get('file_private_path') . DIRECTORY_SEPARATOR . 'hyde');
+}
