@@ -3,10 +3,10 @@ storing them in MySQL.  Or configuring workflows.  Is that a problem?  Can I
 still use Drupal?
 
 Mr.  Hyde is the evil version of Dr.  [Jekyll](https://jekyllrb.com/) --
-it's a Drupal that lets you create Markdown files and store them in a git
-repo...  but display them as pages in a Drupal site.  This allows you to use
+it's a Drupal module that lets you create Markdown files and store them in a git
+repo...  but it displays them as pages in a Drupal site.  This allows you to use
 Drupal's general layout engine (themes and blocks) while tracking content in
-Git/Github/etc.
+`git` (and using stock workflows like Github PR's or Gitlab MR's).
 
 # Install the module
 
@@ -35,6 +35,10 @@ new repo here (`git init`) or clone an existing repo.
 > __Tip__: If you want to store content in another folder, override the
 > value of `hyde_path` by calling `drush vset hyde_path /path/to/doc/root`
 > or editing `settings.php`.
+
+> __Tip__: Want to be sure that malicious web users can't do evil things -- that only
+> CLI users can work with this content? Just set the file-permissions appropriately
+> and use `settings.php` to lock-down the `hyde_path` option.
 
 # Add a new page
 
