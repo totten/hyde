@@ -46,7 +46,7 @@ $ git add hello-world.md
 $ git commit
 ```
 
-# Markdown Metadata
+# Markdown metadata
 
 In Jekyll syntax, a Markdown file can begin with a YAML metadata. In this
 example, we set the `title` of the HTML page with a little extra metadata:
@@ -79,7 +79,7 @@ I'm trying to write this quickly, so I don't really care.
     * Changing layouts
 * Want to be sure that *only* CLI users can manipulate Markdown files? Just set the file-permissions appropriately.
 
-# Coding Style
+# Coding style
 
 This repo is a safe space for godawful code that I wrote in 15 minutes
 after drinking some beer.
